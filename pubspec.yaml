@@ -60,9 +60,7 @@ flutter:
     - assets/images/memorize.svg
     - assets/images/writin.svg
     - assets/songs/readinMusic.mp3
-    - assets/songs/cold.mp3
-    - assets/songs/Recording.mp3
-    - assets/songs/Recording2.mp3
+    
 
     - assets/songs/codinMusic.mp3
     - assets/songs/writingMusic.mp3
