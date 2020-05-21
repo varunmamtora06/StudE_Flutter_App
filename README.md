@@ -7,7 +7,7 @@ An app which will help to focus on activities.
 <img src='Screenshots/reading.png' width='300'>
 <img src='Screenshots/writing.png' width='300'>
 <img src='Screenshots/coding.png' width='300'>
-<img src='Screenshots/meditating.png' width='300'>
+<img src='Screenshots/meditate.png' width='300'>
 <img src='Screenshots/timeselect.png' width='300'>
 <img src='Screenshots/timer.png' width='300'>
 </div>
