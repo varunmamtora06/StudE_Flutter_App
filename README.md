@@ -24,4 +24,3 @@ An app which will help to focus on activities.
 - [x] Added music while timer is on
 - [ ] To add Note taking feature
 - [ ] To add about developer section
-- [ ] To improve UI
