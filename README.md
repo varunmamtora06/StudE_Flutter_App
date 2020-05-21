@@ -1,2 +1,4 @@
-# StudE_Flutter_App
+# StudE
 An app which will help to focus on activities.
+
+## SAMPLES
