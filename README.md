@@ -20,7 +20,7 @@ An app which will help to focus on activities.
 * Music might help the user to concentrate on the activities.
 * Note taking feature(to be added)
 
-##To Dos
+## To Dos
 - [x] Added music while timer is on
 - [ ] To add Note taking feature
 - [ ] To add about developer section
