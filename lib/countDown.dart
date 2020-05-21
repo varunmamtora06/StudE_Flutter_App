@@ -68,7 +68,7 @@ class _countDownState extends State<countDown> {
           myPlayer.dispose();
 
 
-          /*to handle timer screen crash when back arrow was pressed following is this solution*/
+         
 
 
 
@@ -82,7 +82,7 @@ class _countDownState extends State<countDown> {
             myPlayer.play();
           }
 
-          /*to handle timer screen crash when back arrow was pressed following is this solution*/
+          
 
 
 
@@ -96,7 +96,7 @@ class _countDownState extends State<countDown> {
             myPlayer.play();
           }
 
-          /*to handle timer screen crash when back arrow was pressed following is this solution*/
+          
 
 
 
@@ -114,7 +114,7 @@ class _countDownState extends State<countDown> {
             myPlayer.play();
           }
 
-          /*to handle timer screen crash when back arrow was pressed following is this solution*/
+          
 
 
         }
