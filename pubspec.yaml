@@ -23,16 +23,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
   flutter_svg: ^0.17.4
-#  audioplayers: ^0.15.1
   numberpicker: ^1.2.0
   assets_audio_player: ^1.4.0+1
+  shared_preferences: ^0.5.7+3
 
 
 
@@ -57,15 +52,12 @@ flutter:
     - assets/images/codin.svg
     - assets/images/meditate.svg
     - assets/images/notin.svg
-    - assets/images/memorize.svg
     - assets/images/writin.svg
     - assets/songs/readinMusic.mp3
-    
-
     - assets/songs/codinMusic.mp3
     - assets/songs/writingMusic.mp3
     - assets/songs/meditateMusic.mp3
-    - assets/images/logo.svg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
