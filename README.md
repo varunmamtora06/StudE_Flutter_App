@@ -22,3 +22,5 @@ An app which will help to focus on activities.
 * Music might help the user to concentrate on the activities.
 * Note taking feature and swipe to delete note.
 
+## Download
+- Download [StudE](https://github.com/varunmamtora06/StudE_Flutter_App/releases/download/v1.0/app-release.apk).
