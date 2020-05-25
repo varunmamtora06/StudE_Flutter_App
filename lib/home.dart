@@ -21,17 +21,13 @@ class _homeState extends State<home> {
 //      backgroundColor: Color(0xffD52DA7),
         backgroundColor: Color(0xffFFCFF2 ),
       appBar: AppBar(
+        centerTitle: true,
         title: Text("StudE"),
         backgroundColor: Color(0xff6A1352 ),
       ),
 
-      body: GridView.count(
-
-        crossAxisCount: 1,
-        padding: EdgeInsets.all(16.0),
-        childAspectRatio: 4,
-        crossAxisSpacing: 10.0,
-        mainAxisSpacing: 10.0,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           mygriditm(context,'Read','assets/images/readin.svg'),
           mygriditm(context,'Write','assets/images/writin.svg'),
@@ -39,8 +35,10 @@ class _homeState extends State<home> {
           mygriditm(context,'Notes','assets/images/notin.svg'),
           mygriditm(context,'Meditate','assets/images/meditate.svg'),
         ],
-
       )
+
+
+
 
 
     );
@@ -55,71 +53,76 @@ Widget mygriditm(BuildContext context,String task,String img)
   String mediDescrip='1-Do it for a short time(5-10)mins.\n2-Try a variety of meditations to find what suits you.\n3-Make yourself very comfortable.\n4-Don\'t think about other activities.';
 
 
-  return Container(
+  return Padding(
+    padding:EdgeInsets.all(15.0),
+    child: Container(
 
-    margin: EdgeInsets.only(bottom: 5,top: 5),
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(24.0),
-      color: Colors.white ,
+      height: 90,
+
+      decoration: BoxDecoration(
+
+        borderRadius: BorderRadius.circular(24.0),
+        color: Colors.white ,
 //       color:Color(0xffC6E0E9 ),
-      boxShadow: [BoxShadow(
-        blurRadius: 10.0,
-        offset: Offset(
-        6.0, // Move to right 10  horizontally
-        7.0, // Move to bottom 10 Vertically
+        boxShadow: [BoxShadow(
+          blurRadius: 10.0,
+          offset: Offset(
+          6.0, // Move to right 10  horizontally
+          7.0, // Move to bottom 10 Vertically
+        ),
+        )
+        ]
+
+
       ),
-      )
-      ]
-
-        
-    ),
-    child: InkWell(
-      onTap: (){
-        if(task=='Read')
-          {
-            Navigator.push(context, MaterialPageRoute(builder:(context)=>pgLayout(barTitle:'ReadingPage',pic:'assets/images/readin.svg',heading:'READING',descrip:readDescrip,songName: 'readinMusic')));
+      child: InkWell(
+        onTap: (){
+          if(task=='Read')
+            {
+              Navigator.push(context, MaterialPageRoute(builder:(context)=>pgLayout(barTitle:'ReadingPage',pic:'assets/images/readin.svg',heading:'READING',descrip:readDescrip,songName: 'readinMusic')));
+            }
+          else if(task=='Write'){
+            Navigator.push(context, MaterialPageRoute(builder:(context)=>pgLayout(barTitle:'WritingPage',pic:'assets/images/writin.svg',heading:'WRITING',descrip:writeDescrip,songName: 'writingMusic')));
           }
-        else if(task=='Write'){
-          Navigator.push(context, MaterialPageRoute(builder:(context)=>pgLayout(barTitle:'WritingPage',pic:'assets/images/writin.svg',heading:'WRITING',descrip:writeDescrip,songName: 'writingMusic')));
-        }
-        else if(task=='Code'){
-          Navigator.push(context, MaterialPageRoute(builder:(context)=>pgLayout(barTitle:'CodingPage',pic:'assets/images/codin.svg',heading:'CODING',descrip:codeDescrip,songName: 'codinMusic')));
-        }
-        else if(task=='Notes'){
-          Navigator.push(context, MaterialPageRoute(builder:(context)=>notePage()));
-        }
-        else {
-          Navigator.push(context, MaterialPageRoute(builder:(context)=>pgLayout(barTitle:'MeditatePage',pic:'assets/images/meditate.svg',heading:'MEDITATE',descrip:mediDescrip,songName: 'meditateMusic')));
-        }
+          else if(task=='Code'){
+            Navigator.push(context, MaterialPageRoute(builder:(context)=>pgLayout(barTitle:'CodingPage',pic:'assets/images/codin.svg',heading:'CODING',descrip:codeDescrip,songName: 'codinMusic')));
+          }
+          else if(task=='Notes'){
+            Navigator.push(context, MaterialPageRoute(builder:(context)=>notePage()));
+          }
+          else {
+            Navigator.push(context, MaterialPageRoute(builder:(context)=>pgLayout(barTitle:'MeditatePage',pic:'assets/images/meditate.svg',heading:'MEDITATE',descrip:mediDescrip,songName: 'meditateMusic')));
+          }
 
-      },
-      child: Row(
+        },
+        child: Row(
 
-        children: <Widget>[
-          Container(
-            child: Container(
+          children: <Widget>[
+            Container(
+              child: Container(
 //            color: Colors.greenAccent,
-              padding: EdgeInsets.all(8),
-              margin: EdgeInsets.all(5),
-              width: 100,
-              height: 100,
+                padding: EdgeInsets.all(8),
+                margin: EdgeInsets.all(5),
+                width: 100,
+                height: 100,
 
-              child: SvgPicture.asset(
-                img,
-                fit: BoxFit.contain,
+                child: SvgPicture.asset(
+                  img,
+                  fit: BoxFit.contain,
 
+                ),
               ),
+
             ),
 
-          ),
+            Text(task,
+              style:TextStyle(fontSize: 40,
 
-          Text(task,
-            style:TextStyle(fontSize: 40,
-
-            ) ,
-          ),
-        ],
-      ),
-    )
+              ) ,
+            ),
+          ],
+        ),
+      )
+    ),
   );
 }

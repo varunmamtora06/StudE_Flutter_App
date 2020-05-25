@@ -7,41 +7,45 @@ import 'dart:async';
 import 'package:assets_audio_player/assets_audio_player.dart';
 
 
-
-
-import 'package:study/pglayout.dart';
-import 'home.dart';
+//import 'package:study/pglayout.dart';
+//import 'home.dart';
 
 class countDown extends StatefulWidget {
-  int timeCount;String songName;
-  bool showPicker = true, showTimer = false;
+  int timeCount;
+  String songName;
+  bool showPicker = true,
+      showTimer = false;
 
-  countDown({this.timeCount, this.showPicker, this.showTimer,this.songName});
+  countDown({this.timeCount, this.showPicker, this.showTimer, this.songName});
 
   @override
   _countDownState createState() =>
-      _countDownState(timeCount, showPicker, showTimer,songName);
+      _countDownState(timeCount, showPicker, showTimer, songName);
 }
 
 class _countDownState extends State<countDown> {
-  int hour = 0, minutes = 0, seconds = 0;
+  int hour = 0,
+      minutes = 0,
+      seconds = 0;
   String songName;
-  bool started = true, stopped = true, checktimer = true;
+  bool started = true,
+      stopped = true,
+      checktimer = true;
 
   int timefortimer = 0;
 
   String timetodisp = "";
 
   int timeCount;
-  bool showPicker = true, showTimer = false;
+  bool showPicker = true,
+      showTimer = false;
 
-  _countDownState(this.timeCount, this.showPicker, this.showTimer,this.songName);
+  _countDownState(this.timeCount, this.showPicker, this.showTimer,
+      this.songName);
 
   AssetsAudioPlayer myPlayer = AssetsAudioPlayer();
 
-  bool isPlay=true;
-
-
+  bool isPlay = true;
 
 
   void start() {
@@ -49,7 +53,6 @@ class _countDownState extends State<countDown> {
       started = false;
       stopped = false;
       checktimer = true;
-
     });
     timefortimer = (hour * 3600) + (minutes * 60) + seconds;
     Timer.periodic(
@@ -68,9 +71,7 @@ class _countDownState extends State<countDown> {
           myPlayer.dispose();
 
 
-         
-
-
+          /*to handle timer screen crash when back arrow was pressed following is this solution*/
 
 
           Navigator.pop(context);
@@ -78,12 +79,11 @@ class _countDownState extends State<countDown> {
           timetodisp = timefortimer.toString();
           timefortimer -= 1;
 
-          if(isPlay==false){
+          if (isPlay == false) {
             myPlayer.play();
           }
 
-          
-
+          /*to handle timer screen crash when back arrow was pressed following is this solution*/
 
 
         } else if (timefortimer < 3600) {
@@ -92,12 +92,11 @@ class _countDownState extends State<countDown> {
           timetodisp = m.toString() + ":" + s.toString();
           timefortimer -= 1;
 
-          if(isPlay==false){
+          if (isPlay == false) {
             myPlayer.play();
           }
 
-          
-
+          /*to handle timer screen crash when back arrow was pressed following is this solution*/
 
 
         } else {
@@ -110,11 +109,11 @@ class _countDownState extends State<countDown> {
 
           timefortimer -= 1;
 
-          if(isPlay==false){
+          if (isPlay == false) {
             myPlayer.play();
           }
 
-          
+          /*to handle timer screen crash when back arrow was pressed following is this solution*/
 
 
         }
@@ -128,11 +127,8 @@ class _countDownState extends State<countDown> {
       started = true;
       stopped = true;
       checktimer = false;
-
     });
   }
-
-
 
 
   @override
@@ -153,7 +149,9 @@ class _countDownState extends State<countDown> {
                       size: 50,
                       color: Color(0xff6A1352),
                     ),
-                    onPressed: () { Navigator.pop(context);},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                   ),
                 ],
               ),
@@ -175,15 +173,20 @@ class _countDownState extends State<countDown> {
                               ),
                             ),
                           ),
-                          NumberPicker.integer(
-                            initialValue: hour,
-                            minValue: 0,
-                            maxValue: 23,
-                            onChanged: (val) {
-                              setState(() {
-                                hour = val;
-                              });
-                            },
+                          Theme(
+                            data: Theme.of(context).copyWith(textTheme: TextTheme(headline1: TextStyle(color: Color(0xffFFCFF2)))),//to change the number picker color
+                            child: NumberPicker.integer(
+                              initialValue: hour,
+                              minValue: 0,
+                              maxValue: 23,
+                              onChanged: (val) {
+                                setState(() {
+                                  hour = val;
+                                });
+                              },
+
+                            ),
+
                           ),
                         ],
                       ),
@@ -210,15 +213,18 @@ class _countDownState extends State<countDown> {
                               ),
                             ),
                           ),
-                          NumberPicker.integer(
-                            initialValue: minutes,
-                            minValue: 0,
-                            maxValue: 59,
-                            onChanged: (val) {
-                              setState(() {
-                                minutes = val;
-                              });
-                            },
+                          Theme(
+                            data: Theme.of(context).copyWith(textTheme: TextTheme(headline1: TextStyle(color: Color(0xffFFCFF2)))),
+                            child: NumberPicker.integer(
+                              initialValue: minutes,
+                              minValue: 0,
+                              maxValue: 59,
+                              onChanged: (val) {
+                                setState(() {
+                                  minutes = val;
+                                });
+                              },
+                            ),
                           ),
                         ],
                       ),
@@ -245,15 +251,18 @@ class _countDownState extends State<countDown> {
                               ),
                             ),
                           ),
-                          NumberPicker.integer(
-                            initialValue: seconds,
-                            minValue: 0,
-                            maxValue: 59,
-                            onChanged: (val) {
-                              setState(() {
-                                seconds = val;
-                              });
-                            },
+                          Theme(
+                            data: Theme.of(context).copyWith(textTheme: TextTheme(headline1: TextStyle(color: Color(0xffFFCFF2)))),
+                            child: NumberPicker.integer(
+                              initialValue: seconds,
+                              minValue: 0,
+                              maxValue: 59,
+                              onChanged: (val) {
+                                setState(() {
+                                  seconds = val;
+                                });
+                              },
+                            ),
                           ),
                         ],
                       ),
@@ -321,12 +330,10 @@ class _countDownState extends State<countDown> {
                       myPlayer.play();
 
                       //----------------------------------------------
-                     isPlay=myPlayer.isPlaying.value;
-
+                      isPlay = myPlayer.isPlaying.value;
 
 
                       //---------
-
 
 
                     },
@@ -342,11 +349,10 @@ class _countDownState extends State<countDown> {
                     padding: EdgeInsets.only(
                         left: 40, right: 40, top: 10, bottom: 10),
                     color: Colors.red,
-                    onPressed: (){
+                    onPressed: () {
                       stopped ? null : stop();
                       myPlayer.stop();
                       myPlayer.dispose();
-
                     },
                     child: Text(
                       "Stop",
