@@ -1,20 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:numberpicker/numberpicker.dart';
 import 'dart:async';
 
 //
 import 'package:assets_audio_player/assets_audio_player.dart';
 
-
-//import 'package:study/pglayout.dart';
-//import 'home.dart';
-
 class countDown extends StatefulWidget {
   int timeCount;
   String songName;
-  bool showPicker = true,
-      showTimer = false;
+  bool showPicker = true, showTimer = false;
 
   countDown({this.timeCount, this.showPicker, this.showTimer, this.songName});
 
@@ -24,30 +20,24 @@ class countDown extends StatefulWidget {
 }
 
 class _countDownState extends State<countDown> {
-  int hour = 0,
-      minutes = 0,
-      seconds = 0;
+  int hour = 0, minutes = 0, seconds = 0;
   String songName;
-  bool started = true,
-      stopped = true,
-      checktimer = true;
+  bool started = true, stopped = true, checktimer = true;
 
   int timefortimer = 0;
 
   String timetodisp = "Press Start";
 
   int timeCount;
-  bool showPicker = true,
-      showTimer = false;
+  bool showPicker = true, showTimer = false;
 
-  _countDownState(this.timeCount, this.showPicker, this.showTimer,
-      this.songName);
+  _countDownState(
+      this.timeCount, this.showPicker, this.showTimer, this.songName);
 
   AssetsAudioPlayer myPlayer = AssetsAudioPlayer();
 
   bool isPlay = true;
   bool backPress = false;
-
 
   void start() {
     setState(() {
@@ -71,13 +61,8 @@ class _countDownState extends State<countDown> {
           myPlayer.stop();
           myPlayer.dispose();
           setState(() {
-            backPress=false;
+            backPress = false;
           });
-
-
-
-          /*to handle timer screen crash when back arrow was pressed following is this solution*/
-
 
           Navigator.pop(context);
         } else if (timefortimer < 60) {
@@ -87,10 +72,6 @@ class _countDownState extends State<countDown> {
           if (isPlay == false) {
             myPlayer.play();
           }
-
-          /*to handle timer screen crash when back arrow was pressed following is this solution*/
-
-
         } else if (timefortimer < 3600) {
           int m = timefortimer ~/ 60;
           int s = timefortimer - (60 * m);
@@ -100,10 +81,6 @@ class _countDownState extends State<countDown> {
           if (isPlay == false) {
             myPlayer.play();
           }
-
-          /*to handle timer screen crash when back arrow was pressed following is this solution*/
-
-
         } else {
           int h = timefortimer ~/ 3600;
           int t = timefortimer - (3600 * h);
@@ -117,10 +94,6 @@ class _countDownState extends State<countDown> {
           if (isPlay == false) {
             myPlayer.play();
           }
-
-          /*to handle timer screen crash when back arrow was pressed following is this solution*/
-
-
         }
 //      timetodisp=timefortimer.toString();
       });
@@ -135,11 +108,15 @@ class _countDownState extends State<countDown> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: onBack,
+      onWillPop: () {
+        onBack();/*had to put a delay cuz music wont stop for some reason if there was no delay in pop*/
+        Future.delayed(const Duration(milliseconds: 1000), () {
+          Navigator.pop(context);
+        });
+      },
       child: Scaffold(
         backgroundColor: Color(0xffFFCFF2),
         resizeToAvoidBottomPadding: false,
@@ -149,6 +126,7 @@ class _countDownState extends State<countDown> {
             children: <Widget>[
               Container(
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     IconButton(
                       icon: Icon(
@@ -157,8 +135,10 @@ class _countDownState extends State<countDown> {
                         color: Color(0xff6A1352),
                       ),
                       onPressed: () {
-                        onBack();
-
+                        onBack();/*had to put a delay cuz music wont stop for some reason if there was no delay in pop*/
+                        Future.delayed(const Duration(milliseconds: 1000), () {
+                          Navigator.pop(context);
+                        });
                       },
                     ),
                   ],
@@ -182,7 +162,11 @@ class _countDownState extends State<countDown> {
                               ),
                             ),
                             Theme(
-                              data: Theme.of(context).copyWith(textTheme: TextTheme(headline1: TextStyle(color: Color(0xffFFCFF2)))),//to change the number picker color
+                              data: Theme.of(context).copyWith(
+                                  textTheme: TextTheme(
+                                      headline1:
+                                          TextStyle(color: Color(0xffFFCFF2)))),
+                              //to change the number picker color
                               child: NumberPicker.integer(
                                 initialValue: hour,
                                 minValue: 0,
@@ -192,9 +176,7 @@ class _countDownState extends State<countDown> {
                                     hour = val;
                                   });
                                 },
-
                               ),
-
                             ),
                           ],
                         ),
@@ -222,7 +204,10 @@ class _countDownState extends State<countDown> {
                               ),
                             ),
                             Theme(
-                              data: Theme.of(context).copyWith(textTheme: TextTheme(headline1: TextStyle(color: Color(0xffFFCFF2)))),
+                              data: Theme.of(context).copyWith(
+                                  textTheme: TextTheme(
+                                      headline1:
+                                          TextStyle(color: Color(0xffFFCFF2)))),
                               child: NumberPicker.integer(
                                 initialValue: minutes,
                                 minValue: 0,
@@ -260,7 +245,10 @@ class _countDownState extends State<countDown> {
                               ),
                             ),
                             Theme(
-                              data: Theme.of(context).copyWith(textTheme: TextTheme(headline1: TextStyle(color: Color(0xffFFCFF2)))),
+                              data: Theme.of(context).copyWith(
+                                  textTheme: TextTheme(
+                                      headline1:
+                                          TextStyle(color: Color(0xffFFCFF2)))),
                               child: NumberPicker.integer(
                                 initialValue: seconds,
                                 minValue: 0,
@@ -340,10 +328,7 @@ class _countDownState extends State<countDown> {
                         //----------------------------------------------
                         isPlay = myPlayer.isPlaying.value;
 
-
                         //---------
-
-
                       },
                       child: Text(
                         "Start",
@@ -378,11 +363,11 @@ class _countDownState extends State<countDown> {
         ),
       ),
     );
-
   }
-  Future<bool>onBack(){
+
+  Future<bool> onBack() {
     setState(() {
-      backPress=true;
+      backPress = true;
     });
   }
 }
