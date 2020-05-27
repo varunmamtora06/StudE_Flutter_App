@@ -3,8 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stude/new_todo.dart';
-import 'package:stude/todo.dart';
+import 'package:study/new_todo.dart';
+import 'package:study/todo.dart';
 import 'dart:convert';
 
 class notePage extends StatefulWidget {
