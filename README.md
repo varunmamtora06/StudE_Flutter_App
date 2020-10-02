@@ -19,7 +19,7 @@ An app which will help to focus on activities.
 * Tips to perform the activities efficiently.
 * Has a timer.
 * Smooth instrumental music is played while the timer is on.
-* Music might help the user to concentrate on the activities.
+* Music will help the user to concentrate on the activities.
 * Note taking feature and swipe to delete note.
 
 ## Download
